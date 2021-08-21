@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
@@ -17,6 +16,7 @@ import javax.persistence.*;
 @Builder
 // ORM -> object mapping to table
 @Entity // User Class is stored in database
+//@DynamicInsert // when it's insert null field data can be removed
 public class User {
 
     @Id //Primary Key
@@ -32,8 +32,10 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @ColumnDefault("'user'")
-    private String role; // Enum is more accuracy
+    // DB has only RoleType
+    // @ColumnDefault("'user'") // Enum is more accuracy
+    @Enumerated(EnumType.STRING)
+    private RoleType role; //ADMIN, USER
 
     @CreationTimestamp // auto insert time
     private Timestamp createDate;

@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,9 +31,12 @@ public class Board {
     @ColumnDefault("0")
     private int count;
 
-    @ManyToOne // Many = Board, User = One -> one user can create many boards
+    @ManyToOne(fetch = FetchType.EAGER) // Many = Board, User = One -> one user can create many boards
     @JoinColumn(name = "userId")
     private User user; // DB can't store object. FK,JAVA can store object
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy means it's not owner(NOT FK) No create db column
+    private List<Reply> reply;
 
     @CreationTimestamp
     private Timestamp createDate;
