@@ -1,2 +1,9 @@
-com\ken\blog\BlogApplication.class
+com\ken\blog\test\TempController.class
+com\ken\blog\model\User.class
+com\ken\blog\test\HttpControllerTest.class
+com\ken\blog\test\Member$MemberBuilder.class
 com\ken\blog\test\BlogControllerTest.class
+com\ken\blog\test\Member.class
+com\ken\blog\BlogApplication.class
+com\ken\blog\model\Reply.class
+com\ken\blog\model\Board.class
