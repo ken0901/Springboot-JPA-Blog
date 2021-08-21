@@ -1,4 +1,4 @@
 # Springboot-JPA-Blog
 
 
-Create tables
+Create boards(user,comment,board)
