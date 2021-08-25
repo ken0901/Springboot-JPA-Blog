@@ -23,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // follow db numbering which is connected a project
     private int id; //sequence, auto-increment
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, unique = true)
     private String username; // id
 
     @Column(nullable = false, length = 100) //length is 100 because implement encrypt with hashing
