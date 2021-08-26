@@ -37,6 +37,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType role; //ADMIN, USER
 
+    // manually insert - Timestamp.valueOf(LocalDateTime.now())
     @CreationTimestamp // auto insert time
     private Timestamp createDate;
 }
