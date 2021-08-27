@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +19,33 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/blog/user/loginForm">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/blog/user/joinForm">Sign In</a>
-          </li>
-        </ul>
+
+      <c:choose>
+        <c:when test="${empty sessionScope.principal}">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/user/loginForm">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/user/joinForm">Sign up</a>
+              </li>
+            </ul>
+        </c:when>
+        <c:otherwise>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/user/writeForm">Write</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/user/userForm">User Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/user/signout">Sign Out</a>
+              </li>
+            </ul>
+        </c:otherwise>
+      </c:choose>
+
       </div>
     </nav>
     <br>

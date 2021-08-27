@@ -4,8 +4,8 @@ import com.ken.blog.model.User;
 import com.ken.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 // Regsister bean to IOC through Spring component scan
 @Service
@@ -24,5 +24,10 @@ public class UserService {
             System.out.println("UsrService: SignIn(): "+e.getMessage());
         }
         return -1;
+    }
+
+    @Transactional(readOnly = true) // when it's selected transaction starts, service ends transaction also ends
+    public User login(User user){
+        return userRepository.findByUsernameAndPassword(user.getUsername(),user.getPassword());
     }
 }

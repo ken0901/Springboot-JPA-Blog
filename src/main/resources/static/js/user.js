@@ -4,6 +4,10 @@ let index = {
         $("#btn-save").on("click",()=>{ // function(){}, ()=>{} for binding this keyword
             this.save();
         });
+
+        $("#btn-login").on("click",()=>{ // function(){}, ()=>{} for binding this keyword
+            this.login();
+        });
     },
 
     save: function(){
@@ -26,6 +30,28 @@ let index = {
             dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
         }).done(function(res){
             //console.log(res);
+            alert("Sign up completed");
+            location.href="/blog";
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+
+    },
+
+    login: function(){
+//        alert('user function execute');
+        let data = {
+            username: $("#username").val(),
+            password: $("#password").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "/blog/api/user/login",
+            data: JSON.stringify(data), //http body data
+            contentType: "application/json; charset=utf-8", // what kind of body data type(MIME)
+            dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
+        }).done(function(res){
+            //console.log(res);
             alert("Sign in completed");
             location.href="/blog";
         }).fail(function(error){
@@ -33,5 +59,4 @@ let index = {
         });
     }
 }
-
 index.init();

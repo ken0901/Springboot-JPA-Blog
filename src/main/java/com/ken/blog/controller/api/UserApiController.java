@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class UserApiController {
 
     @Autowired
     private UserService userService;
+
+//    @Autowired
+//    private HttpSession session;
 
     @PostMapping("/api/user")
     public ResponseDto<Integer> save(@RequestBody User user){ // username, password, email
@@ -22,6 +27,18 @@ public class UserApiController {
         // insert data into DB
         user.setRole(RoleType.USER);
         int result = userService.signIn(user);
-        return new ResponseDto<Integer>(HttpStatus.OK.value(),result); // convert javascript object (Jackson)
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1); // convert javascript object (Jackson)
+    }
+
+    // todo list - using spring security for sign in
+    @PostMapping("/api/user/login")
+    public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
+        System.out.println("UserApiController: login execute");
+        User principal = userService.login(user);
+
+        if(principal!=null){
+            session.setAttribute("principal",principal);
+        }
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
 }
