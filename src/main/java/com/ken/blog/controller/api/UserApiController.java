@@ -1,7 +1,6 @@
 package com.ken.blog.controller.api;
 
 import com.ken.blog.dto.ResponseDto;
-import com.ken.blog.model.RoleType;
 import com.ken.blog.model.User;
 import com.ken.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +17,19 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
+
 //    @Autowired
 //    private HttpSession session;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user){ // username, password, email
         System.out.println("UserApiController: save execute");
         // insert data into DB
-        user.setRole(RoleType.USER);
-        int result = userService.signIn(user);
+        userService.signIn(user);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1); // convert javascript object (Jackson)
     }
 
-    // todo list - using spring security for sign in
+    /*
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         System.out.println("UserApiController: login execute");
@@ -40,5 +39,5 @@ public class UserApiController {
             session.setAttribute("principal",principal);
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
-    }
+    }*/
 }

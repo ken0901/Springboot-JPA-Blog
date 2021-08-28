@@ -1,11 +1,7 @@
 server:
     port: 8000
     servlet:
-        context-path: /blog
-        encoding:
-            charset: UTF-8
-            enabled: true
-            force: true
+        context-path: /
 
 spring:
     mvc:
