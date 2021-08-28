@@ -1,6 +1,6 @@
 # Springboot-JPA-Blog
 
-## functions
+## Functions
 * Create boards(user,comment,board) <br>
 * Sign in, Sign up , Sign out - Spring Security
 
