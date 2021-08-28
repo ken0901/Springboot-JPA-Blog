@@ -1,7 +1,8 @@
-# Springboot-JPA-Blog
+## Springboot-JPA-Blog
 
-
+# functions
 Create boards(user,comment,board)
+Sign in, Sign up , Sign out - Spring Security
 
 # Skills
 Front - JSP, HTML, CSS, Javascript(ajax), Bootstrap <br>
