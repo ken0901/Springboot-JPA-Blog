@@ -26,13 +26,30 @@ public class BoardService {
 
     }
 
+    @Transactional(readOnly = true)
     public Page<Board> listOfContents(Pageable pageable){
         return boardRepository.findAll(pageable);
     }
 
+    @Transactional(readOnly = true)
     public Board DetailOfContent(int id){
         return boardRepository.findById(id).orElseThrow(()->{
             return new IllegalArgumentException("Failed detail of content: not found id");
         });
+    }
+
+    @Transactional
+    public void delete(int id){
+        boardRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateOfContent(int id, Board requestBoard){
+        Board board = boardRepository.findById(id).orElseThrow(()->{
+            return new IllegalArgumentException("Failed found id: not found id");
+        }); // persistence
+        board.setTitle(requestBoard.getTitle());
+        board.setContent(requestBoard.getContent());
+        // when this method is ended, transaction is also ended then dirty checking starts - auto updated ( DB flush)
     }
 }
