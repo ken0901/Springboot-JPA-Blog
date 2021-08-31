@@ -28,7 +28,6 @@ public class Board {
     @Lob // big data
     private String content; // summer note library
 
-    @ColumnDefault("0")
     private int count;
 
     @ManyToOne(fetch = FetchType.EAGER) // Many = Board, User = One -> one user can create many boards

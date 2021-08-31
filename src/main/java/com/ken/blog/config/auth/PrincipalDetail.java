@@ -1,6 +1,7 @@
 package com.ken.blog.config.auth;
 
 import com.ken.blog.model.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,6 +10,7 @@ import java.util.Collection;
 
 // Spring security intercepts login logic and it's success
 // UserDetails type object will be stored in spring security primary session storage
+@Getter
 public class PrincipalDetail implements UserDetails {
     private User user;
 
