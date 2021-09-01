@@ -8,8 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-// Regsister bean to IOC through Spring component scan
+// Register bean to IOC through Spring component scan
 @Service
 public class UserService {
 
@@ -29,11 +28,11 @@ public class UserService {
     }
 
     @Transactional
-    public void update(User user){
+    public void update(User user) {
         // when it's updating, persist User object from persistence context and then update persisted User object
         // Bring User object (using select query ) from the DB because of the persistence
         // Updating persisted Object is auto-sending update query to DB
-        User persistence = userRepository.findById(user.getId()).orElseThrow(()->{
+        User persistence = userRepository.findById(user.getId()).orElseThrow(() -> {
             return new IllegalArgumentException("No found user");
         });
         String rawPassword = user.getPassword();

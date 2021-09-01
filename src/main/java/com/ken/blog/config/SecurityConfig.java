@@ -1,11 +1,11 @@
 package com.ken.blog.config;
 
 
-import com.ken.blog.config.auth.PrincipalDetail;
 import com.ken.blog.config.auth.PrincipalDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,8 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PrincipalDetailService principalDetailService;
 
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
     @Bean // loC
-    public BCryptPasswordEncoder encodePWD(){
+    public BCryptPasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
     }
 
@@ -40,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable() // csrf token unable (when you test setup unable this)
             .authorizeRequests()
-                .antMatchers("/","/auth/**","/js/**","/css/**","/image/**")
+                .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
