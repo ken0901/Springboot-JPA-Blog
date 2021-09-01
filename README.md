@@ -5,7 +5,8 @@
 * Update, Delete boards <br>
 * See content details <br>
 * Paging - Page changes according to the number of media <br>
-* Sign in, Sign up , Sign out - Spring Security
+* Sign in, Sign up , Sign out - Spring Security <br>
+* Update user info, session value also updates
 
 ## Skills
 * Front - JSP,JSTL, HTML, CSS, Javascript(ajax), Bootstrap <br>
