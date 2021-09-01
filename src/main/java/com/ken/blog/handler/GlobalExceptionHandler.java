@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = IllegalArgumentException.class)
-    public String handleArgumentException(IllegalArgumentException ie){
-        return "<h1>"+ie.getMessage()+"</h1>";
+    public String handleArgumentException(IllegalArgumentException ie) {
+        return "<h1>" + ie.getMessage() + "</h1>";
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ResponseDto<String> handleException(Exception e){
-        return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(),e.getMessage());
+    public ResponseDto<String> handleException(Exception e) {
+        return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
     }
 }

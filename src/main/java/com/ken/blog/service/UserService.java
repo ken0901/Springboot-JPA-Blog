@@ -20,7 +20,7 @@ public class UserService {
     private BCryptPasswordEncoder encode;
 
     @Transactional
-    public void signIn(User user){
+    public void signIn(User user) {
         String rawPassword = user.getPassword(); //1234 original
         String encPassword = encode.encode(rawPassword); // hash
         user.setPassword(encPassword);

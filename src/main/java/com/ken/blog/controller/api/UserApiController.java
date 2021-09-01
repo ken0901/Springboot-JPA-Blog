@@ -22,11 +22,11 @@ public class UserApiController {
 //    private HttpSession session;
 
     @PostMapping("/auth/joinProc")
-    public ResponseDto<Integer> save(@RequestBody User user){ // username, password, email
+    public ResponseDto<Integer> save(@RequestBody User user) { // username, password, email
         System.out.println("UserApiController: save execute");
         // insert data into DB
         userService.signIn(user);
-        return new ResponseDto<Integer>(HttpStatus.OK.value(),1); // convert javascript object (Jackson)
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); // convert javascript object (Jackson)
     }
 
     /*

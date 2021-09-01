@@ -21,27 +21,27 @@ public class BoardController {
 
     // @AuthenticationPrincipal PrincipalDetail principalDetail
     @GetMapping({"", "/"})
-    public String index(Model model, @PageableDefault(size = 3,sort = "id",direction = Sort.Direction.DESC) Pageable pageable) {
+    public String index(Model model, @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         // /WEB-INF/views/index.jsp
-        model.addAttribute("boards",boardService.listOfContents(pageable));
+        model.addAttribute("boards", boardService.listOfContents(pageable));
         return "index"; // execute viewResolver
     }
 
     // for USER role, need sign in
     @GetMapping("/board/saveForm")
-    public String saveForm(){
+    public String saveForm() {
         return "board/saveForm";
     }
 
     @GetMapping("/board/{id}")
-    public String findByID(@PathVariable int id,Model model){
+    public String findByID(@PathVariable int id, Model model) {
         model.addAttribute(boardService.DetailOfContent(id));
         return "board/detail";
     }
 
     @GetMapping("board/{id}/updateForm")
-    public String updateForm(@PathVariable int id, Model model){
-        model.addAttribute("board",boardService.DetailOfContent(id));
+    public String updateForm(@PathVariable int id, Model model) {
+        model.addAttribute("board", boardService.DetailOfContent(id));
         return "board/updateForm";
     }
 }

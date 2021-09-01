@@ -66,8 +66,8 @@ public class PrincipalDetail implements UserDetails {
         */
 
         // lambda
-        collectors.add(()->{
-            return "ROLE_"+user.getRole(); // ROLE_USER
+        collectors.add(() -> {
+            return "ROLE_" + user.getRole(); // ROLE_USER
         });
         return collectors;
     }

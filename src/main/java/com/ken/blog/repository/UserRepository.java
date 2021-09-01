@@ -9,7 +9,7 @@ import java.util.Optional;
 // DAO
 // Auto register to bean
 //@Repository  // able to omit
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     // SELECT * FROM user WHERE username = 1?;
     Optional<User> findByUsername(String username);
 }
