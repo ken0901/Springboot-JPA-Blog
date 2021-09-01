@@ -2,6 +2,7 @@
 
 ## Functions
 * Create boards(user,comment,board) <br>
+* Update, Delete boards <br>
 * See content details <br>
 * Paging - Page changes according to the number of media <br>
 * Sign in, Sign up , Sign out - Spring Security
