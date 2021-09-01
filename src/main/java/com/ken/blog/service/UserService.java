@@ -26,7 +26,22 @@ public class UserService {
         user.setPassword(encPassword);
         user.setRole(RoleType.USER);
         userRepository.save(user);
+    }
 
+    @Transactional
+    public void update(User user){
+        // when it's updating, persist User object from persistence context and then update persisted User object
+        // Bring User object (using select query ) from the DB because of the persistence
+        // Updating persisted Object is auto-sending update query to DB
+        User persistence = userRepository.findById(user.getId()).orElseThrow(()->{
+            return new IllegalArgumentException("No found user");
+        });
+        String rawPassword = user.getPassword();
+        String encPassword = encode.encode(rawPassword);
+        persistence.setPassword(encPassword);
+        persistence.setEmail(user.getEmail());
+        // updating user ends = service ends = transaction ends = auto commit
+        // persistence object is changed, dirty checking starts (sending update query)
     }
 
     /*@Transactional(readOnly = true) // when it's selected transaction starts, service ends transaction also ends

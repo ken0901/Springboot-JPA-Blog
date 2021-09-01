@@ -5,6 +5,11 @@ let index = {
             this.save();
         });
 
+        $("#btn-update").on("click",()=>{ // function(){}, ()=>{} for binding this keyword
+                    this.update();
+        });
+
+
 //        $("#btn-login").on("click",()=>{ // function(){}, ()=>{} for binding this keyword
 //            this.login();
 //        });
@@ -31,6 +36,28 @@ let index = {
         }).done(function(res){
             //console.log(res);
             alert("Sign up completed");
+            location.href="/";
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+
+    },
+
+    update: function(){
+        let data = {
+            id : $("#id").val(),
+            password: $("#password").val(),
+            email: $("#email").val()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/user",
+            data: JSON.stringify(data), //http body data
+            contentType: "application/json; charset=utf-8", // what kind of body data type(MIME)
+            dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
+        }).done(function(res){
+            alert("Updating complete");
             location.href="/";
         }).fail(function(error){
             alert(JSON.stringify(error));

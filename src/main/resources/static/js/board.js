@@ -42,7 +42,7 @@ let index = {
             contentType: "application/json; charset=utf-8",
             dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
         }).done(function(res){
-            alert("Deleting completed");
+            alert("Deleting complete");
             location.href="/";
         }).fail(function(error){
             alert(JSON.stringify(error));
@@ -63,7 +63,7 @@ let index = {
             contentType: "application/json; charset=utf-8", // what kind of body data type(MIME)
             dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
         }).done(function(res){
-            alert("Editing completed");
+            alert("Editing complete");
             location.href="/";
         }).fail(function(error){
             alert(JSON.stringify(error));
