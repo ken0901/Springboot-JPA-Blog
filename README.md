@@ -17,4 +17,4 @@
 
 
 ## Ref
-* https://www.youtube.com/channel/UCVrhnbfe78ODeQglXtT1Elw
+* https://www.youtube.com/playlist?list=PL93mKxaRDidECgjOBjPgI3Dyo8ka6Ilqm
