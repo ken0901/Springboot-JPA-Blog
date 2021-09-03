@@ -13,3 +13,8 @@
 * Back - Java 1.8 with Spring boot, Spring data JPA, Spring Security, ORM, Hibernate <br>
 * DB - MYSQL
 * IDE - IntelliJ, VS code,  MySQL Workbench
+
+
+## Ref
+* https://github.com/codingspecialist/Springboot-JPA-Blog
+* https://www.youtube.com/channel/UCVrhnbfe78ODeQglXtT1Elw
