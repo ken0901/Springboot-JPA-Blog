@@ -17,5 +17,4 @@
 
 
 ## Ref
-* https://github.com/codingspecialist/Springboot-JPA-Blog
 * https://www.youtube.com/channel/UCVrhnbfe78ODeQglXtT1Elw
