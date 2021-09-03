@@ -18,6 +18,14 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder encode;
 
+    @Transactional(readOnly = true)
+    public User findUser(String username) {
+        User user = userRepository.findByUsername(username).orElseGet(()->{
+            return new User();
+        });
+        return user;
+    }
+
     @Transactional
     public void signIn(User user) {
         String rawPassword = user.getPassword(); //1234 original
@@ -35,10 +43,14 @@ public class UserService {
         User persistence = userRepository.findById(user.getId()).orElseThrow(() -> {
             return new IllegalArgumentException("No found user");
         });
-        String rawPassword = user.getPassword();
-        String encPassword = encode.encode(rawPassword);
-        persistence.setPassword(encPassword);
-        persistence.setEmail(user.getEmail());
+
+        // Validate check -> enable updating when oauth field is empty ( already user)
+        if(persistence.getOauth()==null || persistence.getOauth().equals("")){
+            String rawPassword = user.getPassword();
+            String encPassword = encode.encode(rawPassword);
+            persistence.setPassword(encPassword);
+            persistence.setEmail(user.getEmail());
+        }
         // updating user ends = service ends = transaction ends = auto commit
         // persistence object is changed, dirty checking starts (sending update query)
     }

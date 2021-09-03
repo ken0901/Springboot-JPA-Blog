@@ -23,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // follow db numbering which is connected a project
     private int id; //sequence, auto-increment
 
-    @Column(nullable = false, length = 30, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String username; // id
 
     @Column(nullable = false, length = 100) //length is 100 because implement encrypt with hashing
@@ -36,6 +36,8 @@ public class User {
     // @ColumnDefault("'user'") // Enum is more accuracy
     @Enumerated(EnumType.STRING)
     private RoleType role; //ADMIN, USER
+
+    private String oauth; // kakao, google
 
     // manually insert - Timestamp.valueOf(LocalDateTime.now())
     @CreationTimestamp // auto insert time

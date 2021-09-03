@@ -29,3 +29,12 @@ spring:
     jackson:
         serialization:
             fail-on-empty-beans: false
+
+    http:
+        encoding:
+            charset: UTF-8
+            enalbed: true
+            force: true
+# important key
+ken:
+    key: ken1234
