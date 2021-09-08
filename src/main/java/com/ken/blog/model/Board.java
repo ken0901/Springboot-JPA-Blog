@@ -37,6 +37,7 @@ public class Board {
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy means it's not owner(NOT FK) No create db column
     @JsonIgnoreProperties({"board"})
+    @OrderBy("id desc")
     private List<Reply> replies;
 
     @CreationTimestamp

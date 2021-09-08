@@ -1,6 +1,7 @@
 package com.ken.blog.controller.api;
 
 import com.ken.blog.config.auth.PrincipalDetail;
+import com.ken.blog.dto.ReplySaveRequestDto;
 import com.ken.blog.dto.ResponseDto;
 import com.ken.blog.model.Board;
 import com.ken.blog.service.BoardService;
@@ -30,6 +31,15 @@ public class BoardApiController {
     @PutMapping("/api/board/{id}")
     public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board) {
         boardService.updateOfContent(id, board);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    // receive data in controller, creating dto layer is better for the program
+    // doesn't use dto layer because it's small project
+    @PostMapping("/api/board/{boardId}/reply")
+    // @PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principalDetail
+    public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) {
+        boardService.comment(replySaveRequestDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }
