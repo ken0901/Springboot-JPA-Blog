@@ -9,6 +9,7 @@
 * Update user info, session value also updates
 * Sign up using OAuth with Kakao
 * Show comment list, add comment
+* Delete comment(only writer)
 * DI multiple ways
 * How to use native query in JPA
 * How to use DTO 
