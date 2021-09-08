@@ -1,5 +1,6 @@
 package com.ken.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,7 +36,8 @@ public class Board {
     private User user; // DB can't store object. FK,JAVA can store object
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy means it's not owner(NOT FK) No create db column
-    private List<Reply> reply;
+    @JsonIgnoreProperties({"board"})
+    private List<Reply> replies;
 
     @CreationTimestamp
     private Timestamp createDate;

@@ -24,6 +24,27 @@
         <div>${board.content}</div>
     </div>
     <hr/>
+
+    <!-- Comment start-->
+    <div class="card">
+        <div class="card-body"><textarea class="form-control" rows="1"></textarea></div>
+        <div class="card-footer"><button class="btn btn-primary">Register</button></div>
+    </div>
+    <br/>
+    <div class="card">
+        <div class="card-header">comment list</div>
+        <ul id="reply--box" class="list-group">
+          <c:forEach var="reply" items="${board.replies}">
+              <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                <div>${reply.content}</div>
+                <div class="d-flex">
+                    <div class="font-italic">writer: ${reply.user.username} &nbsp;</div>
+                    <button class="bagde">Delete</button>
+                </div>
+              </li>
+          </c:forEach>
+        </ul>
+    </div>
 </div>
 
 
