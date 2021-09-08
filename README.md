@@ -8,6 +8,10 @@
 * Sign in, Sign up , Sign out - Spring Security <br>
 * Update user info, session value also updates
 * Sign up using OAuth with Kakao
+* Show comment list, add comment
+* DI multiple ways
+* How to use native query in JPA
+* How to use DTO 
 
 ## Skills
 * Front - JSP,JSTL, HTML, CSS, Javascript(ajax), Bootstrap <br>
