@@ -7,6 +7,7 @@
 * Paging - Page changes according to the number of media <br>
 * Sign in, Sign up , Sign out - Spring Security <br>
 * Update user info, session value also updates
+* Sign up using OAuth with Kakao
 
 ## Skills
 * Front - JSP,JSTL, HTML, CSS, Javascript(ajax), Bootstrap <br>
@@ -16,5 +17,4 @@
 
 
 ## Ref
-* https://github.com/codingspecialist/Springboot-JPA-Blog
-* https://www.youtube.com/channel/UCVrhnbfe78ODeQglXtT1Elw
+* https://www.youtube.com/playlist?list=PL93mKxaRDidECgjOBjPgI3Dyo8ka6Ilqm
