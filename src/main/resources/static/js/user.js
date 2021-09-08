@@ -34,9 +34,12 @@ let index = {
             contentType: "application/json; charset=utf-8", // what kind of body data type(MIME)
             dataType: "json" // get request from the server, basically it's all string type(look like json) => convert to javascript object
         }).done(function(res){
-            //console.log(res);
-            alert("Sign up completed");
-            location.href="/";
+            if(res.status === 500){
+                alert("Failed sign up");
+            }else{
+                alert("Sign up completed");
+                location.href="/";
+            }
         }).fail(function(error){
             alert(JSON.stringify(error));
         });

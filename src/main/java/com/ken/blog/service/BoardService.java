@@ -104,4 +104,9 @@ public class BoardService {
 
         replyRepository.save(reply);
     }
+
+    @Transactional
+    public void DeleteComment(int replyId){
+        replyRepository.deleteById(replyId);
+    }
 }

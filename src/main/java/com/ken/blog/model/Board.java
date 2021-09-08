@@ -35,7 +35,9 @@ public class Board {
     @JoinColumn(name = "userId")
     private User user; // DB can't store object. FK,JAVA can store object
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy means it's not owner(NOT FK) No create db column
+    // mappedBy means it's not owner(NOT FK) No create db column
+    // cascade = CascadeType.REMOVE - when you delete a board all comment will be removed at the same time
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties({"board"})
     @OrderBy("id desc")
     private List<Reply> replies;

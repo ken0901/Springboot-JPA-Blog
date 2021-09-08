@@ -41,18 +41,21 @@
     <br/>
     <div class="card">
         <div class="card-header">comment list</div>
-        <ul id="reply--box" class="list-group">
+        <ul id="reply-box" class="list-group">
           <c:forEach var="reply" items="${board.replies}">
-              <li id="reply--1" class="list-group-item d-flex justify-content-between">
+              <li id="reply-${reply.id}" class="list-group-item d-flex justify-content-between">
                 <div>${reply.content}</div>
                 <div class="d-flex">
                     <div class="font-italic">writer: ${reply.user.username} &nbsp;</div>
-                    <button class="bagde">Delete</button>
+                    <c:if test="${reply.user.username eq principal.user.username}">
+                        <button onClick="index.replyDelete(${board.id},${reply.id})" class="bagde">Delete</button>
+                    </c:if>
                 </div>
               </li>
           </c:forEach>
         </ul>
     </div>
+    <!-- comment end-->
 </div>
 
 
